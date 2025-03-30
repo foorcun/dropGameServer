@@ -1,2 +1,4 @@
-com\example\GameEndpoint.class
 com\example\GameServer.class
+com\example\GameEndpoint.class
+com\example\DropMessage.class
+com\example\DropSpawner.class

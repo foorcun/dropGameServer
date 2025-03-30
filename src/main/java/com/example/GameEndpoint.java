@@ -22,20 +22,27 @@ public class GameEndpoint {
     public void onOpen(Session session) {
         System.out.println("Client connected: " + session.getId());
         sessions.add(session);
+
+
+        DropSpawner.start(sessions); // ✅ trigger spawner logic
     }
 
     @OnMessage
     public void onMessage(String message, Session session) {
         System.out.println("Received from " + session.getId() + ": " + message);
-        for (Session s : sessions) {
-            if (s.isOpen()) {
-                try {
-                    s.getBasicRemote().sendText("Echo from server: " + message);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+
+        // Example: when the client moves, respond with a droplet spawn
+        //String response = String.format("{\"type\":\"spawn\",\"x\":%.2f,\"y\":5.0}", Math.random() * 7);
+
+        // for (Session s : sessions) {
+        //   if (s.isOpen()) {
+        //       try {
+        //           s.getBasicRemote().sendText(response); // ✅ Send valid JSON
+        //       } catch (IOException e) {
+        //           e.printStackTrace();
+        //       }
+        //   }
+        //}
     }
 
     @OnClose
