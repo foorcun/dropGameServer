@@ -15,11 +15,12 @@ public class DropSpawner {
         started = true;
 
         scheduler.scheduleAtFixedRate(() -> {
-            String message = DropMessage.createSpawnDrop(Math.random() * 7, 5.0);
+
 
             for (Session session : sessions) {
                 if (session.isOpen()) {
                     try {
+                        String message = DropMessage.createSpawnDrop(Math.random() * 7, 5.0);
                         session.getBasicRemote().sendText(message);
                     } catch (IOException e) {
                         e.printStackTrace();
