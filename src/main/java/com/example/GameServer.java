@@ -11,7 +11,7 @@ public class GameServer {
         String portEnv = System.getenv("PORT");
         int port = (portEnv != null) ? Integer.parseInt(portEnv) : 8080;
 
-        Server server = new Server("0.0.0.0", port, "/game", null, GameEndpoint.class);
+        Server server = new Server("0.0.0.0", port, "/", null, GameEndpoint.class);
 
         try {
             server.start();
